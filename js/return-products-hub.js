@@ -52,7 +52,6 @@ async function resultadoHubCsv(docCSV, hubProduct) {
     }
 }
 
-
 /**********************************************************************
  * @function resultadoHubJson función para buscar los Objetos según HUB
  * @param {*documento json} docJSON 
@@ -66,9 +65,10 @@ async function resultadoHubJson(docJSON, hubProduct) {
         const response = await fetch(docJSON);
         const data = await response.json();
         data.forEach(item => {
-            /** se ejecuta el filtrado según hub y su estado 'ACTIVO' en la BBDD*/
+            /** se ejecuta el filtrado según hub y su estado 'ACTIVO' en la BBDD
+             * Se puede quitar esta última condicional y solo filtrar el HUB */
             if (item.hubs.includes(hubProduct) && (item.state.toLowerCase() == 'a')) {
-                /** Se rellena el el arreglo de objetos encontrados */
+                /** Se rellena el arreglo de objetos con los productos encontrados */
                 obj.push(item);
             }
         });
@@ -97,7 +97,10 @@ function clicksIdsHubs(docJob) {
     hubsIDhtml.forEach(idHubs => {
         idHubs.addEventListener('click', function () {
 
-            /** dependiendo del tipo de docJob se activará una u otra función */
+            /** Dependiendo del tipo de docJob se activará una u otra función. 
+             * @var idHubs.id es el HUB que se obtiene del ID de la etiqueta 
+             * contenedora con la clase 'hub-prog'
+            */
             if (docJob.includes('.json')) {
                 infoProducts(resultadoHubJson(docJob, idHubs.id), idHubs.id)
             } else if (docJob.includes('.csv')) {
@@ -113,7 +116,7 @@ function clicksIdsHubs(docJob) {
  * @param {arreglo de objeto filtrado} arrayObj 
  * @return / retorna las tarjetas paginadas para mostrarse en pantalla.
  * Dentro de esta función se ejecutará la función de construcción
- * de las tarjetas llamando al <template> de DOM
+ * de las tarjetas llamando al <template> del DOM - HTML
  ***********************************************************************/
 function paginacionObjetos(arrayObj) {
     /*********************************************************************
@@ -132,11 +135,11 @@ function paginacionObjetos(arrayObj) {
             $template = document.getElementById('template-card').content,
             $fragment = document.createDocumentFragment();
             
-        /** inicializacion de variables separar el array en las páginas deseadas */
+        /** inicializacion de variables para separar el array en las páginas deseadas */
         const inicio = (paginaActual - 1) * elementosPorPagina;
         const fin = inicio + elementosPorPagina;
         /** Obtenemos los elementos del arreglo de objetos desde una determinada posición
-         * usando la función slice([posición-1],[posición-2]) */
+         * usando la función slice([posición-1],[posición-2]). Número de elementos por página */
         const elementosPagina = arrayObj.slice(inicio, fin);
         const listaElementos = document.querySelector('#content-programs');
         /** se limpia el contenedor de tarjetas para rellenarlas con las encontradas */
@@ -145,7 +148,7 @@ function paginacionObjetos(arrayObj) {
         elementosPagina.forEach(obj => {
             /**
              * @function createCard / se llama a la función para contruir las tarjetas
-             * @param obj / cantidad de objetos según elementos por página
+             * @param obj / producto individual del objeto para construir tarjeta
              * @param $template / plantilla de tarjeta de producto
              * @param $fragment / fragmentos de tarjeta para añadirla al DOM
              */
@@ -153,6 +156,12 @@ function paginacionObjetos(arrayObj) {
         });
         /** Se añade en el contenedor de tarjetas de DOM el fragmento de elementos por página */
         $cards.appendChild($fragment)
+        
+        /***********************************************************
+        * @function lazyLoad retarda la aparición de las imágenes
+        * en el DOM hasta que sean requeridas
+        **********************************************************/
+        lazyLoad();
     }
 
     /** función para mostrar los números de página */
@@ -169,7 +178,8 @@ function paginacionObjetos(arrayObj) {
         botonPaginaAnterior.disabled = paginaActual === 1;
         botonPaginaAnterior.addEventListener('click', () => {
             mostrarElementos(paginaActual - 1);
-            mostrarNumerosPagina(paginaActual - 1, totalPaginas);
+            lazyLoad();
+            mostrarNumerosPagina(paginaActual - 1, totalPaginas);            
         });
         numerosPagina.appendChild(botonPaginaAnterior);
 
@@ -181,6 +191,7 @@ function paginacionObjetos(arrayObj) {
             botonPagina.disabled = i === paginaActual;
             botonPagina.addEventListener('click', () => {
                 mostrarElementos(i);
+                lazyLoad()
                 mostrarNumerosPagina(i, totalPaginas);
                 /** funcion para hacer scroll hacia posicion top de elemento elegido */
                 clickScrollElelemt(scrollElement)
@@ -197,6 +208,7 @@ function paginacionObjetos(arrayObj) {
         botonPaginaSiguiente.disabled = paginaActual === totalPaginas;
         botonPaginaSiguiente.addEventListener('click', () => {
             mostrarElementos(paginaActual + 1);
+            lazyLoad();
             mostrarNumerosPagina(paginaActual + 1, totalPaginas);
         });
         numerosPagina.appendChild(botonPaginaSiguiente);
@@ -208,6 +220,7 @@ function paginacionObjetos(arrayObj) {
     /** muestra los números de página */
     const totalPaginas = Math.ceil(arrayObj.length / elementosPorPagina);
     mostrarNumerosPagina(1, totalPaginas);
+    
 }
 
 

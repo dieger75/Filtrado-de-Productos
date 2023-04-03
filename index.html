@@ -10,6 +10,7 @@
 
 <body>
     <main>
+        <!-- CONTENDERO BUSCADOR -->
         <section>
             <div class="contenedor text-center">
                 <h1>FILTRADO DE PRODUCTOS</h1>
@@ -22,17 +23,27 @@
                 <button class="btn-accent bg-primary" id="boton">Buscar</button>
             </div>
         </section>
-        <!-- SECCION PROGRAMAS -->
+        <!-- FIN CONTENDERO BUSCADOR -->
+        <!-- CONTENDERO GENERAL DE LOS PRODUCTOS CON FILTROS -->
         <section id="our-programs" class="bg-grisclaro">
             <div id="all-courses">
                 <!--
-                    Modificar el contenido de los atributos:
-                    * data-hubactivo, para mostrar en pantalla los productos pertenecientes al HUB
-                    al inicio de la aplicación;
-                    * data-document, el documento con extesion CSV o JSON;
-                    * data-numpagina, para determinar el número de páginas a mostrar en la paginación
+                    Modificar el contenido de los atributos de la etiqueta div#productos:
+                    * data-document => el documento con extesion CSV o JSON;
+                    * data-hubactivo => para mostrar en pantalla al inicio de la aplicación,
+                    los productos del HUB elegido
+                    * data-numpagina => para determinar el número de páginas a mostrar en la paginación
+                    * data-browser => detectará el navegador que se le indique para cambiar el formato de las
+                    imágenes de los productos de WEBP a JPG, por problemas de visualización de las imágenes.
+                    * Por defecto, suele ser Safari el que causa estos problemas, pero puede elegirse entre:
+                        * firefox
+                        * edge
+                        * opera
+                        * chrome
+                        * safari
                 -->
-                <div id="productos" class="container" data-document="./js/csvjson-esade-esp.json" data-hubactivo="best_prog" data-numpagina="6">
+                <div id="productos" class="container" data-document="./js/csvjson-esade-esp.json" data-hubactivo="best_prog" data-numpagina="6" data-browser="safari">
+                    <!-- contenedor de los botones de HUBs -->
                     <div class="indicador" >
                         <div id="cont-fixed">
                             <!--
@@ -95,18 +106,26 @@
                             </div>
                         </div>
                     </div>
+                    <!-- fin contenedor de los botones de HUBs -->
+                    <!-- contenedor para las tarjetas de productos y paginación -->
                     <div id="column-programs">
+                        <!-- contenedor de las tarjetas de productos paginados -->
                         <div id="content-programs"></div>
+                        <!-- fin contenedor de las tarjetas de productos paginados -->
+                        <!-- contenedor de números de paginación -->
                         <div id="paginacion"></div>
+                        <!-- fin contenedor de números de paginación -->
                     </div>
+                    <!-- fin contenedor para las tarjetas de productos y paginación -->
                 </div>
             </div>
         </section>
+        <!-- template de las tarjetas de productos -->
         <template id="template-card">
             <div class="content">
                 <div class="item bg-white">
                     <div class="new-pgr display-none"></div>
-                    <img class="lazy" data-src="" height="100px" alt="" loading="lazy">
+                    <img class="lazyload" data-src="" height="100px" alt="" loading="lazy">
                     <div class="type-course"></div>
                     <div class="cont-text-op">
                         <h2 style="margin-bottom: 10px;"></h2>
@@ -123,6 +142,8 @@
                 </div>
             </div>
         </template>
+        <!-- fin template de las tarjetas de productos -->
+        <!-- FIN CONTENDERO GENERAL DE LOS PRODUCTOS CON FILTROS -->
         <section>
             <div class="contenedor">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, distinctio. Rerum unde libero eum
@@ -142,16 +163,21 @@
     </main>
     <footer></footer>
     <!-- 
-        * Este será el orden de las llamadas a los scripts:        
-            * create-card
-            * return-products-hub
-            * product-filtering-application
-            * searcher
-        * Cualquier alteración del orden provocará la caída de la aplicación
+        * Este será el orden de las llamadas a los scripts:
+            * browser-detected => detecta el tipo de navegador en que se encuentra el usuario
+            * lazyload => retarda la aparición de imágenes en DOM hasta que se necesite       
+            * create-card => crea las tarjetas de productos con el template del DOM
+            * return-products-hub => funciones generales de la APP para retornar las tarjetas filtradas por HUBS
+            * product-filtering-application => muestra resultado de la programática de la APP
+            * searcher => buscador dinámico de la APP una vez cargado los productos en el DOM
+        * Cualquier alteración del orden provocará la caída de la APP
     -->
-    <script defer src="./js/create-card.min.js"></script>
-    <script defer src="./js/return-products-hub.min.js"></script>
-    <script defer src="./js/product-filtering-application.min.js"></script>
-    <script defer src="./js/searcher.min.js"></script>
+    <script defer src="./js/browser-detected.js"></script>
+    <script defer src="./js/lazyload.js"></script>
+    <script defer src="./js/create-card.js"></script>
+    <script defer src="./js/return-products-hub.js"></script>
+    <script defer src="./js/product-filtering-application.js"></script>
+    <script defer src="./js/searcher.js"></script>
+    
 </body>
 </html>

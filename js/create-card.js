@@ -50,14 +50,12 @@ function createCard(obj, $template, $fragment) {
         obj.ulr_pay = obj.ulr_pay + '?utm_' + utmAdded
         obj.url_landing = obj.url_landing + '?utm_' + utmAdded
     }
-    /*================================*/
-    /*	DECLARAR IMAGENES SEGÚN NAVEGADOR
-    /*================================*/
-    // if (navegador == typeNavegador) {
-    //     if (obj.img_home.includes('.webp')) {
-    //         obj.img_home = obj.img_home.replace('.webp', '.jpg')
-    //     }
-    // }
+    /*****************************************************
+     * Cambia el formato de imágenes de WEBP a JPG si el
+     * navegador es SAFARI, debido a que causa problemas
+     * en la visualización de imaágenes WEBP
+     ****************************************************/
+    obj.img_home = navegador.includes(typeBrowser) && obj.img_home.includes('.webp') ? obj.img_home.replace('.webp', '.jpg') : obj.img_home;
 
     /*================================*/
     /*	DECLARAR ETIQUETA NUEVO AL ITEM
@@ -72,7 +70,7 @@ function createCard(obj, $template, $fragment) {
     }
 
     // $template.querySelector('img').dataset.src = obj.img_home
-    $template.querySelector('img').src = './img/home-op-grd-768x339.jpg'
+    $template.querySelector('img').dataset.src = obj.img_home
     $template.querySelector('img').alt = typeCourse + ' | ' + obj.program + ' ' + obj.subtitle
     $template.querySelector('h2').innerText = obj.program
     $template.querySelector('h3').innerText = obj.subtitle
