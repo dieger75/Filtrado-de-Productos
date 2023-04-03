@@ -59,5 +59,3 @@ if (docJob.includes('.json')) {
     infoProducts(resultadoHubCsv(docJob, hubStart), hubStart)
 }
 clicksIdsHubs(docJob)
-
-

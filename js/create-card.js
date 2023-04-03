@@ -97,5 +97,3 @@ function createCard(obj, $template, $fragment) {
     let $clone = document.importNode($template, true);
     $fragment.appendChild($clone);
 }
-
-
