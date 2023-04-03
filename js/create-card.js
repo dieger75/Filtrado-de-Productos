@@ -22,23 +22,22 @@ function createCard(obj, $template, $fragment) {
             textColor = 'text-black'
             break;
     }
-    switch (lang) {
-        case 'es':
-            newProgram = "Nuevo"
-            textBtn = "Ver Programa"
-            if (obj.type_course === 'exm') {
-                typeCourse = 'Executive Master'
-            } else if (obj.type_course === 'cxo') {
-                typeCourse = 'Programa de Alta Dirección'
-            } else if (obj.type_course === 'pe') {
-                typeCourse = 'Programa de Especialización'
-            } else if (obj.type_course === 'pcp') {
-                typeCourse = 'Certificado Profesional';
-            } else if (obj.type_course === 'op') {
-                typeCourse = 'Programa Online';
-            }
-            break;
+    
+    newProgram = "Nuevo"
+    textBtn = "Ver Programa"
+    if (obj.type_course === 'exm') {
+        typeCourse = 'Executive Master'
+    } else if (obj.type_course === 'cxo') {
+        typeCourse = 'Programa de Alta Dirección'
+    } else if (obj.type_course === 'pe') {
+        typeCourse = 'Programa de Especialización'
+    } else if (obj.type_course === 'pcp') {
+        typeCourse = 'Certificado Profesional';
+    } else if (obj.type_course === 'op') {
+        typeCourse = 'Programa Online';
     }
+            
+    
 
     /*================================*/
     /*	SEGUIMIENTO DE LAS UTMS

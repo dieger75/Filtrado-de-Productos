@@ -174,7 +174,8 @@ function paginacionObjetos(arrayObj) {
         // botonPaginaAnterior.textContent = 'Anterior'; 
         botonPaginaAnterior.classList.add('displace')
         /** se contruye etiqueta <img> con la flecha para botón izquierdo */
-        botonPaginaAnterior.innerHTML = '<img src="./iconos/angles-left-solid.svg" alt="">'
+        // botonPaginaAnterior.innerHTML = '<img src="./iconos/angles-left-solid.svg" alt="">'
+        botonPaginaAnterior.innerHTML = '<i class="fa-solid fa-angles-left"></i>'
         botonPaginaAnterior.disabled = paginaActual === 1;
         botonPaginaAnterior.addEventListener('click', () => {
             mostrarElementos(paginaActual - 1);
@@ -204,7 +205,8 @@ function paginacionObjetos(arrayObj) {
         /** botonPaginaSiguiente.textContent = 'Siguiente'; */
         botonPaginaSiguiente.classList.add('displace')
         /** se contruye etiqueta <img> con la flecha para botón derecho */
-        botonPaginaSiguiente.innerHTML = '<img src="./iconos/angles-right-solid.svg" alt="">'
+        // botonPaginaSiguiente.innerHTML = '<img src="./iconos/angles-right-solid.svg" alt="">'
+        botonPaginaSiguiente.innerHTML = '<i class="fa-solid fa-angles-right"></i>'
         botonPaginaSiguiente.disabled = paginaActual === totalPaginas;
         botonPaginaSiguiente.addEventListener('click', () => {
             mostrarElementos(paginaActual + 1);

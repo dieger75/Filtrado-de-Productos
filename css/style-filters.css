@@ -111,6 +111,8 @@
       width: 100%;
   }
 
+  
+
   /*=======================================*/
   /*      ESTILOS ALL COURSES
 /*=======================================*/
@@ -187,7 +189,7 @@
       display: flex;
       align-items: center;
       grid-gap: 1rem;
-      padding: 0.6rem;
+      padding: 0.8rem 0.6rem;
       cursor: pointer;
       color: #000;
       font-weight: 500;
@@ -206,6 +208,14 @@
       width: 30px;
       min-width: 30px;
       display: none;
+  }
+
+  .cont-text-tag  .fa-solid,
+  .cont-text-tag  .fas {
+    font-weight: 900;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
   }
 
   /*==================================================*/
@@ -342,7 +352,8 @@
       justify-content: center;
   }
 
-  #paginacion button img {
+  #paginacion button img,
+  #paginacion button i {
       width: 0.8rem;
       min-width: 0.8rem;
   }
@@ -366,7 +377,8 @@
       background-color: transparent;
   }
 
-  #paginacion button.displace:disabled img {
+  #paginacion button.displace:disabled img,
+  #paginacion button.displace:disabled i {
       filter: opacity(25%)
   }
 
