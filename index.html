@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicación de Filtrado de Productos</title>
-    <link rel="stylesheet" href="./css/style-filters.min.css">
+    <link rel="stylesheet" href="./css/style-filters.css">
 </head>
 <body>
     <main>
@@ -41,7 +41,7 @@
                         * chrome
                         * safari
                 -->
-                <div id="productos" class="container" data-document="./js/csvjson-esade-esp.json" data-hubactivo="best_prog" data-numpagina="6" data-browser="safari">
+                <div id="productos" class="container" data-document="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVq9XrLZKg0yA3TVveDPfCyvZJmXVvhalA-odYRHEjM2FIqRRT6_7vE00vK2A2sw/pub?gid=988486382&single=true&output=csv" data-hubactivo="all_prog" data-numpagina="6" data-browser="safari">
                     <!-- contenedor de los botones de HUBs -->
                     <div class="indicador" >
                         <div id="cont-fixed">
@@ -171,12 +171,12 @@
             * searcher => buscador dinámico de la APP una vez cargado los productos en el DOM
         * Cualquier alteración del orden provocará la caída de la APP
     -->
-    <script defer src="./js/browser-detected.min.js"></script>
-    <script defer src="./js/lazyload.min.js"></script>
-    <script defer src="./js/create-card.min.js"></script>
-    <script defer src="./js/return-products-hub.min.js"></script>
-    <script defer src="./js/product-filtering-application.min.js"></script>
-    <script defer src="./js/searcher.min.js"></script>
+    <script defer src="./js/browser-detected.js"></script>
+    <script defer src="./js/lazyload.js"></script>
+    <script defer src="./js/create-card.js"></script>
+    <script defer src="./js/return-products-hub.js"></script>
+    <script defer src="./js/product-filtering-application.js"></script>
+    <script defer src="./js/searcher.js"></script>
     
 </body>
 </html>

@@ -103,7 +103,7 @@ function clicksIdsHubs(docJob) {
             */
             if (docJob.includes('.json')) {
                 infoProducts(resultadoHubJson(docJob, idHubs.id), idHubs.id)
-            } else if (docJob.includes('.csv')) {
+            } else if (docJob.includes('.csv') || docJob.includes('=csv')) {
                 infoProducts(resultadoHubCsv(docJob, idHubs.id), idHubs.id)
             }
             /** función que ejecuta el ScrollTop según elemento elegido*/

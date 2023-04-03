@@ -55,7 +55,7 @@ function infoProducts(arrayObjetos, tagProgram) {
 
 if (docJob.includes('.json')) {
     infoProducts(resultadoHubJson(docJob, hubStart), hubStart)
-} else if (docJob.includes('.csv')) {
+} else if (docJob.includes('.csv') || docJob.includes('=csv')) {
     infoProducts(resultadoHubCsv(docJob, hubStart), hubStart)
 }
 clicksIdsHubs(docJob)

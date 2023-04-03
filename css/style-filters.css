@@ -238,8 +238,9 @@
   }
 
   #all-courses .container #content-programs .content .item img {
-      width: 100%;
-      height: auto;
+      height: 100%;
+      max-height: 150px;
+      object-fit: cover;
   }
 
   #all-courses .container #content-programs .content .item .new-pgr {

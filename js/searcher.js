@@ -10,7 +10,7 @@ var docFilter;
  *******************************************************************/
 if (docJob.includes('.json')) {
     docFilter = resultadoHubJson(docJob, '')
-} else if (docJob.includes('.csv')) {
+} else if (docJob.includes('.csv') || docJob.includes('=csv')) {
     docFilter = resultadoHubCsv(docJob, '')
 }
 
