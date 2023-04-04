@@ -111,7 +111,7 @@
       width: 100%;
   }
 
-  
+
 
   /*=======================================*/
   /*      ESTILOS ALL COURSES
@@ -148,6 +148,7 @@
       justify-content: space-between;
       background-color: var(--white);
       padding: 5% 3%;
+      overflow: hidden;
   }
 
   /*contenedor de programas*/
@@ -169,7 +170,7 @@
   #all-courses .container #content-programs .content {
       float: left;
       opacity: 1;
-      animation: visible 500ms;
+      animation: visible 300ms ease-in;
   }
 
   /*estado activo de los tags*/
@@ -210,12 +211,12 @@
       display: none;
   }
 
-  .cont-text-tag  .fa-solid,
-  .cont-text-tag  .fas {
-    font-weight: 900;
-    font-size: 20px;
-    width: 30px;
-    text-align: center;
+  .cont-text-tag .fa-solid,
+  .cont-text-tag .fas {
+      font-weight: 900;
+      font-size: 20px;
+      width: 30px;
+      text-align: center;
   }
 
   /*==================================================*/
@@ -422,18 +423,25 @@
           display: block;
       }
 
-      #all-courses .container .indicador div.activo {
+      #all-courses .container .indicador .cont-text-tag.activo {
           background-color: transparent;
       }
 
-      #all-courses .container .indicador div.activo .text-tag::after {
+      #all-courses .container .indicador .cont-text-tag .text-tag::after {
           content: '';
-          width: 100%;
+          display: block;
+          width: 0%;
           height: 3px;
           background-color: var(--tertiary);
           position: absolute;
           left: 0;
           bottom: -10px;
+          transition: all .3s;
+      }
+
+      #all-courses .container .indicador .cont-text-tag.activo .text-tag::after {
+          width: 100%;
+          transition: all .3s;
       }
 
       #all-courses .container #column-programs {
